@@ -1,0 +1,133 @@
+/*** VARIABLES ***/
+:root {
+  --blue: #5d8aa8;
+  --red: #a85d65;
+  --white: #fff;
+  --grey-3: #333;
+  --grey-4: #444;
+}
+
+.mw-wrapper {
+	padding: 50px 20px;
+	max-width: 1024px;
+	margin: auto;
+}
+
+.flex {
+		display: flex;
+		flex-direction: column;
+}
+
+.center {
+	align-items: center;
+}
+
+.page-title {
+	color: var(--red)
+}
+
+h2 {
+	color: var(--grey-4);
+}
+
+p {
+	color: var(--grey-3);
+}
+
+/*** NAVBAR ***/
+.navbar {
+	background-color: var(--blue);
+}
+
+a, .navbar-toggler > .material-icons {
+	color: var(--white);
+}
+
+a:hover, .navbar-toggler > .material-icons:hover {
+	color: var(--grey-3);
+	text-decoration: none;
+}
+
+/*** HOMEPAGE ***/
+.home-cards {
+	padding: 0px 16px;
+}
+
+.card {
+	justify-content: center;
+	background-color: var(--red);
+	border-radius: 0;
+	width: 320px;
+	height: 300px;
+}
+
+.card + .card {
+	margin-top: 20px;
+}
+
+.card-body {
+	flex: 0;
+	color: var(--white);
+	font-size: 30px;
+}
+
+.card-body h2 {
+	color: var(--white);
+}
+
+/*** SURVEY ***/
+.required {
+	font-style: italic;
+	color: var(--red);
+}
+
+.form-label {
+	font-weight: 600;
+	padding-bottom: 5px;
+}
+
+.form-section + .form-section {
+	padding-top: 5px;
+}
+
+.btn.btn-primary {
+	border-radius: 0;
+	background-color: var(--blue);
+	border-color: var(--blue);
+	margin-top: 30px;
+	width: 300px;
+}
+
+/*** SEARCH PAGE ***/
+.search {
+	position: relative;
+}
+
+.search .material-icons {
+	position: absolute;
+	top: 5px;
+	right: 10px;
+	font-size: 30px;
+	color: var(--grey-3);
+}
+
+
+/*** MEDIA QUERIES ***/
+@media only screen and (min-width: 675px) {
+	.flex {
+		flex-direction: row;
+	}
+	
+	.center {
+		justify-content: center;
+	}
+	
+	.card + .card {
+		margin-left: 20px;
+		margin-top: 0;
+	}
+	
+	input[type=email] {
+		width: 50%;
+	}
+}
