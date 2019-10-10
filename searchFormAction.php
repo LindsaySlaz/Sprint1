@@ -42,14 +42,15 @@ if ($error) {
 		print 		"<table class='table'>\n";
 		print 			"<thead>\n";
 		print 				"<tr>\n";
-		
-		// Loop through all the col names here
-		// foreach ($columns as $key) {
-		// 		print "<th scope='col'>\n";
-		//		$columns[$key];
-		//		print "</th>\n";
-		// }
-		
+		print 					"<th>\n";
+		print						"Album Title\n";
+		print 					"</th>\n";
+		print 					"<th>\n";
+		print						"Album Artist\n";
+		print 					"</th>\n";
+		print 					"<th>\n";
+		print						"Album Length\n";
+		print 					"</th>\n";
 		print 				"</tr>\n";
 		print 			"</thead>\n";
 		print 			"<tbody>\n";
