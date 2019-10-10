@@ -1,6 +1,7 @@
 <?php
 
 require_once("Template.php");
+require_once("DB.class.php");
 
 $page = new Template("Album Results");
 $page->addHeadElement("<meta charset='utf-8'>");
@@ -16,6 +17,8 @@ $error = false;
 if (!isset($_POST['searchField']) || empty($_POST['searchField'])) {
 	$error = true;
 }
+
+$db = new DB();
 
 if ($error) {
 	// There shouldn't be an error with JS validation
@@ -37,7 +40,11 @@ if ($error) {
 	print			"<h1 class='page-title'>Search Results</h1>\n";
 	print		"</div>\n";	
 	
-	$results = false;
+	$query = "SELECT albumtitle, albumartist, albumlength 
+			  FROM album
+			  WHERE albumtitle = '" + $_POST['searchField'] + "' OR albumartist = '" + $_POST['searchField'] + "';";
+	
+	$results = $db->dbCall($query);	
 	if ($results) {
 		print 		"<table class='table'>\n";
 		print 			"<thead>\n";
