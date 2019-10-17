@@ -1,7 +1,7 @@
 <?php
 
-require_once("Template.php");
-require_once("DB.class.php");
+require_once("classes/Template.php");
+require_once("classes/DB.class.php");
 
 $page = new Template("Album Results");
 $page->addHeadElement("<meta charset='utf-8'>");
@@ -14,11 +14,17 @@ $page->finalizeTopSection();
 $page->finalizeBottomSection();
 
 $error = false;
-if (!isset($_POST['searchField']) || empty($_POST['searchField'])) {
+if (!isset($_POST['searchField']) || empty($_POST['searchField'])) 
+{
 	$error = true;
 }
+$db = new DB();
+$safeValue = $db->dbEsc($_POST['searchField']);
 
-if ($error) {
+
+
+if ($error) 
+{
 	// There shouldn't be an error with JS validation
 	print $page->getTopSection();
 	require_once("header.php");
@@ -29,9 +35,9 @@ if ($error) {
 	
 	require_once("bsScripts.php");
 	print $page->getBottomSection();
-} else {
-	$db = new DB();
-	
+} 
+else 
+{
 	print $page->getTopSection();
 	require_once("header.php");
 	
@@ -42,10 +48,12 @@ if ($error) {
 	
 	$query = "SELECT albumtitle, albumartist, albumlength 
 			  FROM album
-			  WHERE albumtitle = '" . $_POST['searchField'] . "' OR albumartist = '" . $_POST['searchField'] . "';";
+			  WHERE albumtitle = '" . $safeValue . "' OR albumartist = '" . $safeValue . "';";
 	
-	$results = $db->dbCall($query);
-	if ($results) {
+	$results = $db->dbCall($query);	
+	
+	if ($results) 
+	{
 		print 		"<table class='table'>\n";
 		print 			"<thead>\n";
 		print 				"<tr>\n";
@@ -62,20 +70,24 @@ if ($error) {
 		print 			"</thead>\n";
 		print 			"<tbody>\n";
 		
-		// Loop through all the results names here
-		// foreach ($results as $album) {
-		// 		print "<tr>\n";
-		//		foreach ($album as $key) {
-		// 			print "<td>\n";
-		//			$album[$key];
-		//			print "</td>\n";
-		//}
-		//		print "</tr>\n";
-		// }
+		 //Loop through all the results names here
+		 foreach ($results as $album) 
+		 {
+		 		print "<tr>\n";
+				foreach ($album as $key=>$value) 
+				{
+					print "<td>\n";
+					print $value;
+					print "</td>\n";
+				}
+				print "</tr>\n";
+		 }
 
 		print 			"</tbody>\n";
 		print 		"</table>\n";
-	} else {
+	} 
+	else 
+	{
 		print	"<hr/>\n";
 		print	"<h2>No results found.</h2>\n";
 	}
