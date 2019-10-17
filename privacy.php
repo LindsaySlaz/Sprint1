@@ -7,7 +7,7 @@ $page->addHeadElement("<meta charset='utf-8'>");
 $page->addHeadElement("<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>");
 $page->addHeadElement("<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous'>");
 $page->addHeadElement("<link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'>");
-$page->addHeadElement("<link rel='stylesheet' href='styles.css'>");
+$page->addHeadElement("<link rel='stylesheet' href='styles/styles.css'>");
 
 $page->finalizeTopSection();
 $page->finalizeBottomSection();

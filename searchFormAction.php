@@ -7,7 +7,7 @@ $page = new Template("Album Results");
 $page->addHeadElement("<meta charset='utf-8'>");
 $page->addHeadElement("<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>");
 $page->addHeadElement("<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous'>");
-$page->addHeadElement("<link rel='stylesheet' href='styles.css'>");
+$page->addHeadElement("<link rel='stylesheet' href='styles/styles.css'>");
 $page->addHeadElement("<link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'>");
 
 $page->finalizeTopSection();
@@ -17,8 +17,6 @@ $error = false;
 if (!isset($_POST['searchField']) || empty($_POST['searchField'])) {
 	$error = true;
 }
-
-$db = new DB();
 
 if ($error) {
 	// There shouldn't be an error with JS validation
@@ -32,6 +30,8 @@ if ($error) {
 	require_once("bsScripts.php");
 	print $page->getBottomSection();
 } else {
+	$db = new DB();
+	
 	print $page->getTopSection();
 	require_once("header.php");
 	
@@ -42,9 +42,9 @@ if ($error) {
 	
 	$query = "SELECT albumtitle, albumartist, albumlength 
 			  FROM album
-			  WHERE albumtitle = '" + $_POST['searchField'] + "' OR albumartist = '" + $_POST['searchField'] + "';";
+			  WHERE albumtitle = '" . $_POST['searchField'] . "' OR albumartist = '" . $_POST['searchField'] . "';";
 	
-	$results = $db->dbCall($query);	
+	$results = $db->dbCall($query);
 	if ($results) {
 		print 		"<table class='table'>\n";
 		print 			"<thead>\n";
