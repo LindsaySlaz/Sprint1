@@ -137,10 +137,10 @@ print						"Olives\n";
 print					"</label>\n";
 print				"</div>\n";
 print			"</div>\n";
-print			"<button id='submitBtn' type='submit' class='btn btn-primary'>Submit</button>\n";
+print			"<button id='submitBtn' type='submit' class='btn btn-primary' disabled>Submit</button>\n";
 print		"</form>\n";
 print	"</div>\n";
-print    "<script src='validation.js'></script>\n";
+print    "<script src='js/validation.js'></script>\n";
 
 require_once("bsScripts.php");
 print $page->getBottomSection();
