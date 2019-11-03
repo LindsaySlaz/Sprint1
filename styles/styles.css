@@ -5,6 +5,18 @@
   --white: #fff;
   --grey-3: #333;
   --grey-4: #444;
+  --grey-c: #ccc;
+  --grey-e: #eee;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+main {
+	flex: 1;
 }
 
 .mw-wrapper {
@@ -111,6 +123,20 @@ a:hover, .navbar-toggler > .material-icons:hover {
 	color: var(--grey-3);
 }
 
+/*** FOOTER ***/
+.footer {
+	height: 100px;
+	background-color: var(--grey-e);
+	border-top: 3px solid var(--grey-c);
+}
+
+.footer a {
+	color: var(--grey-3);
+}
+
+.footer a:hover {
+	font-weight: 500;
+}
 
 /*** MEDIA QUERIES ***/
 @media only screen and (min-width: 675px) {
