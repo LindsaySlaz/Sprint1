@@ -1,7 +1,7 @@
 <?php
 
+session_start();
 require_once("Template.php");
-
 
 Class GroupTemplate extends Template {
 
@@ -21,6 +21,13 @@ Class GroupTemplate extends Template {
 		$html .=                           "<li class='nav-item'>\n";
 		$html .=                                   "<a class='nav-link' href='survey.php'>Survey</a>\n";
 		$html .=                           "</li>\n";
+		
+		if(!isset($_SESSION['username'])) {
+			$html .=                       "<li class='nav-item'>\n";
+			$html .=                               "<a class='nav-link' href='login.php'>Log In</a>\n";
+			$html .=                       "</li>\n";
+		}
+
 		$html .=                   "</ul>\n";
 		$html .=           "</div>\n";
 		$html .=   "</nav>\n";

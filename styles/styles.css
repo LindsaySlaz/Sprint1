@@ -65,7 +65,7 @@ a:hover, .navbar-toggler > .material-icons:hover {
 	padding: 0px 16px;
 }
 
-.card {
+.home-cards .card {
 	justify-content: center;
 	background-color: var(--red);
 	border-radius: 0;
@@ -85,6 +85,20 @@ a:hover, .navbar-toggler > .material-icons:hover {
 
 .card-body h2 {
 	color: var(--white);
+}
+
+/*** LOGIN ***/
+.login .card {
+	border: 1px solid var(--grey-e);
+}
+
+.card-header {
+	background-color: var(--red);
+	color: var(--white);
+}
+
+input + input {
+	margin-top: 20px;
 }
 
 /*** SURVEY ***/
