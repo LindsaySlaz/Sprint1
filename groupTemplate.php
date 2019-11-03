@@ -27,7 +27,24 @@ Class GroupTemplate extends Template {
 			$html .=                               "<a class='nav-link' href='login.php'>Log In</a>\n";
 			$html .=                       "</li>\n";
 		}
-
+		
+		if(isset($_SESSION['username'])) {
+			$html .=                       "<li class='nav-item dropdown'>\n";
+			$html .=								"<a class='nav-link dropdown-toggle' href='#' id='navbarDropdownMenuLink' data-toggle='dropdown'>\n";
+			$html .=							  "Welcome, " . $_SESSION['username'] . "\n";
+			$html .=							"</a>\n";
+			$html .=							"<div class='dropdown-menu'>\n";
+			
+			if(isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
+				$html .=						  "<a class='dropdown-item' href='surveyData.php'>Survey Data</a>\n";
+			}
+			
+			$html .=							  "<a class='dropdown-item' href='myAccount.php'>My Account</a>\n";
+			$html .=							  "<a class='dropdown-item' href='logout.php'>Log Out</a>\n";
+			$html .=							"</div>\n";
+			$html .=						  "</li>\n";
+		}
+		
 		$html .=                   "</ul>\n";
 		$html .=           "</div>\n";
 		$html .=   "</nav>\n";

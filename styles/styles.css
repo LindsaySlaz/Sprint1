@@ -153,6 +153,21 @@ input + input {
 }
 
 /*** MEDIA QUERIES ***/
+@media only screen and (max-width: 991px) {
+	.dropdown-menu {
+		background-color: var(--blue);
+		border: none;
+	}
+	
+	.dropdown-menu a {
+		color: var(--white);
+	}
+	
+	.dropdown-menu a:active {
+		background-color: transparent;
+	}
+}
+	
 @media only screen and (min-width: 675px) {
 	.flex {
 		flex-direction: row;

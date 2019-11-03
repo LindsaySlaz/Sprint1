@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 require_once("groupTemplate.php");
 require_once("DB.class.php");
 
