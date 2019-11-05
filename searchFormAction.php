@@ -41,7 +41,7 @@ if ($error) {
 	print			"<h1 class='page-title'>Search Results</h1>\n";
 	print		"</div>\n";	
 	
-	$query = "SELECT albumtitle, albumartist, albumlength 
+	$query = "SELECT albumtitle, albumartist, albumlength, albumlink 
 			  FROM album
 			  WHERE albumtitle = '" . $safeValue . "' OR albumartist = '" . $safeValue . "';";
 	
@@ -60,6 +60,9 @@ if ($error) {
 		print 					"<th>\n";
 		print						"Album Length\n";
 		print 					"</th>\n";
+		print 					"<th>\n";
+		print						"Album Link\n";
+		print 					"</th>\n";
 		print 				"</tr>\n";
 		print 			"</thead>\n";
 		print 			"<tbody>\n";
@@ -68,7 +71,10 @@ if ($error) {
 			print "<tr>\n";
 			foreach ($album as $key => $value) {
 				print "<td>\n";
-				print $value;
+				if($key == "albumlink")
+					print "<a href='$value'><img src='amazonMusic.png' width='100' height='30' /></a>";
+				else
+					print $value;
 				print "</td>\n";
 			}
 			print "</tr>\n";
