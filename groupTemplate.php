@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 require_once("Template.php");
 
 Class GroupTemplate extends Template {
