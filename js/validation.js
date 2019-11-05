@@ -1,6 +1,25 @@
 (function() {
+    const loginForm = document.querySelector('#loginForm');
     const surveyForm = document.querySelector('#surveyForm');
 	const searchForm = document.querySelector('#searchForm');
+	
+	if (loginForm) {
+		
+		const username = loginForm.querySelector('#username');
+		const passwordField = loginForm.querySelector('#password');
+		const loginButton = document.querySelector('#loginSubmit');
+		
+		function init() {
+			username.addEventListener('change', checkValidity);
+			passwordField.addEventListener('change', checkValidity);
+		}
+		
+		function checkValidity() {
+			((username.value !== '') && (passwordField.value !== '')) ? loginButton.removeAttribute('disabled') : loginButton.setAttribute('disabled', true);
+		}
+		
+		init();
+	}
 	
 	if (surveyForm) {
 		const email = surveyForm.querySelector('#email');
