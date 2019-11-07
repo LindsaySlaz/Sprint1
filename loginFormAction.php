@@ -30,24 +30,6 @@ if ($error) {
 	$safeUsername = $db->dbEsc($_POST['username']);
 	$safePassword = $db->dbEsc($_POST['password']);
 	
-	$_SESSION['username'] = $safeUsername;
-	
-	$query = "SELECT group_concat(role.rolename separator ',') as roles 
-			  FROM role, user, user2role
-			  WHERE user.id = user2role.userid AND role.id = user2role.roleid AND user.username = '" . $_SESSION['username'] . "';";
-			  
-	$role = $db->dbCall($query);
-	$_SESSION['role'] = '';
-	
-	if(strpos($role, 'admin') === true){
-		$_SESSION['role'] = 'admin';
-	}
-	else{
-		$_SESSION['role'] = "user";
-	}
-	
-	
-	
-	
+	$_SESSION['user'] = $safeUsername;
 	header("location: index.php");	
 }
