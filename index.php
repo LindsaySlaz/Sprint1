@@ -17,7 +17,6 @@ $page->finalizeBottomSection();
 print $page->getTopSection();
 print $page->createHeader();
 
-
 print	"<div class='mw-wrapper'>\n";
 print		"<div class='flex center home-cards'>\n";
 print			"<div class='card text-center'>\n";
