@@ -25,13 +25,12 @@ print		"<div class='page-header'>\n";
 print			"<h1 class='page-title'>Survey Data</h1>\n";
 print		"</div>\n";
 
-// $query = "SELECT albumtitle, albumartist, albumlength, albumlink 
-		  // FROM album
-		  // WHERE albumtitle = '" . $safeValue . "' OR albumartist = '" . $safeValue . "';";
+$query = "SELECT major, expectedgrade, favetopping
+		  FROM survey;";
 
-// $results = $db->dbCall($query);	
+$results = $db->dbCall($query);	
 
-if (true) {
+if ($results) {
 	print 		"<table class='table'>\n";
 	print 			"<thead>\n";
 	print 				"<tr>\n";
@@ -48,15 +47,15 @@ if (true) {
 	print 			"</thead>\n";
 	print 			"<tbody>\n";
 	
-	// foreach ($results as $survey) {
-		// print "<tr>\n";
-		// foreach ($survey as $key => $value) {
-			// print "<td>\n";
-			// print $value;
-			// print "</td>\n";
-		// }
-		// print "</tr>\n";
-	// }
+	 foreach ($results as $survey) {
+		 print "<tr>\n";
+		 foreach ($survey as $key => $value) {
+			 print "<td>\n";
+			 print $value;
+			 print "</td>\n";
+		 }
+		 print "</tr>\n";
+	 }
 
 	print 			"</tbody>\n";
 	print 		"</table>\n";
