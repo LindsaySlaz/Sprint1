@@ -46,7 +46,7 @@ if ($error) {
 	
 	$query = "SELECT albumtitle, albumartist, albumlength, albumlink 
 			  FROM album
-			  WHERE albumtitle = '" . $safeValue . "' OR albumartist = '" . $safeValue . "';";
+			  WHERE albumtitle LIKE '%" . $safeValue . "%' OR albumartist LIKE '%" . $safeValue . "%';";
 	
 	$results = $db->dbCall($query);	
 	
@@ -86,6 +86,7 @@ if ($error) {
 		print 			"</tbody>\n";
 		print 		"</table>\n";
 	} else {
+		var_dump($query);
 		print	"<hr/>\n";
 		print	"<h2>No results found.</h2>\n";
 	}

@@ -17,6 +17,9 @@ $page->finalizeBottomSection();
 print $page->getTopSection();
 print $page->createHeader();
 
+var_dump($_SESSION['username']);
+//var_dump($_SESSION['query']);
+var_dump($_SESSION['role']);
 print	"<div class='mw-wrapper'>\n";
 print		"<div class='flex center home-cards'>\n";
 print			"<div class='card text-center'>\n";

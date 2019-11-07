@@ -31,7 +31,7 @@ print								"<input type='text' class='form-control' id='username' name='userna
 print								"<input type='password' class='form-control' id='password' name='password' placeholder='**********'>\n";
 print							"</div>\n";
 print						"</div>\n";
-print						"<button id='loginSubmit' type='submit' class='btn btn-primary mt-1' disabled>Log In</button>\n";
+print						"<button id='loginSubmit' type='submit' class='btn btn-primary mt-1'>Log In</button>\n";
 print					"</form>\n";
 print				"</div>\n";
 print			"</div>\n";
