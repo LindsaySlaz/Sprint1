@@ -30,6 +30,24 @@ if ($error) {
 	$safeUsername = $db->dbEsc($_POST['username']);
 	$safePassword = $db->dbEsc($_POST['password']);
 	
-	$_SESSION['user'] = $safeUsername;
-	header("location: index.php");	
+	
+	
+	$query = "SELECT u.userpass, r.rolename
+		FROM user u
+		JOIN user2role o ON u.id=o.id
+		JOIN role r ON o.id=r.id
+		WHERE u.username = '" . $safeUsername . "';";
+	
+	$results = $db->dbCall($query);	 		
+	
+	
+	if(password_verify($safePassword, $results[0]["userpass"]))
+	{
+		$_SESSION['username'] = $safeUsername;
+		$_SESSION['role'] = $results[0]["rolename"];
+		header("location: index.php");	
+	}
+	else
+		header("location: login.php");
+		
 }
