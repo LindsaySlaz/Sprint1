@@ -30,7 +30,7 @@ Class GroupTemplate extends Template {
 		if(isset($_SESSION['username'])) {
 			$html .=                       "<li class='nav-item dropdown'>\n";
 			$html .=								"<a class='nav-link dropdown-toggle' href='#' id='navbarDropdownMenuLink' data-toggle='dropdown'>\n";
-			$html .=							  "Welcome, " . $_SESSION['username'] . "\n";
+			$html .=							  "Welcome, " . explode(' ', $_SESSION['name'])[0] . "!\n";
 			$html .=							"</a>\n";
 			$html .=							"<div class='dropdown-menu'>\n";
 			

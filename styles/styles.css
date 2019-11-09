@@ -185,4 +185,9 @@ input + input {
 	input[type=email] {
 		width: 50%;
 	}
+	
+	/*** MY ACCOUNT ***/
+	#accountForm input[type=text] {
+		width: 50%;
+	}
 }

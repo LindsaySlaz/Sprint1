@@ -75,7 +75,7 @@ if ($error) {
 			foreach ($album as $key => $value) {
 				print "<td>\n";
 				if($key == "albumlink")
-					print "<a href='$value'><img src='amazonMusic.png' width='100' height='30' /></a>";
+					print "<a href='$value'><img src='img/amazonMusic.png' width='100' height='30' /></a>";
 				else
 					print $value;
 				print "</td>\n";
