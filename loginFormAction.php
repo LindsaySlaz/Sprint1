@@ -32,7 +32,7 @@ if ($error) {
 	
 	
 	
-	$query = "SELECT u.userpass, r.rolename
+	$query = "SELECT u.userpass, u.realname, r.rolename
 		FROM user u
 		JOIN user2role o ON u.id=o.id
 		JOIN role r ON o.id=r.id
@@ -40,10 +40,10 @@ if ($error) {
 	
 	$results = $db->dbCall($query);	 		
 	
-	
 	if(password_verify($safePassword, $results[0]["userpass"]))
 	{
 		$_SESSION['username'] = $safeUsername;
+		$_SESSION['name'] = $results[0]["realname"];
 		$_SESSION['role'] = $results[0]["rolename"];
 		header("location: index.php");	
 	}
