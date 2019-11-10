@@ -86,7 +86,6 @@ if ($error) {
 		print 			"</tbody>\n";
 		print 		"</table>\n";
 	} else {
-		var_dump($query);
 		print	"<hr/>\n";
 		print	"<h2>No results found.</h2>\n";
 	}
