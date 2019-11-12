@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require_once("groupTemplate.php");
+require_once("classes/GroupTemplate.php");
 
 $page = new GroupTemplate("Log In");
 $page->addHeadElement("<meta charset='utf-8'>");
@@ -31,6 +31,11 @@ print								"<input type='text' class='form-control' id='username' name='userna
 print								"<input type='password' class='form-control' id='password' name='password' placeholder='**********'>\n";
 print							"</div>\n";
 print						"</div>\n";
+if (isset($_SESSION['error'])) {
+	print 					"<div class='login-error text-left'>\n";
+	print						"<i>" . $_SESSION['error'] . "</i>\n";
+	print 					"</div>\n";
+}
 print						"<button id='loginSubmit' type='submit' class='btn btn-primary mt-1' disabled>Log In</button>\n";
 print					"</form>\n";
 print				"</div>\n";

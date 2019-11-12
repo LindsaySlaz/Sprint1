@@ -1,8 +1,7 @@
 <?php
 
 session_start();
-require_once("groupTemplate.php");
-require_once("DB.class.php");
+require_once("classes/GroupTemplate.php");
 
 $page = new GroupTemplate("My Account");
 $page->addHeadElement("<meta charset='utf-8'>");
@@ -24,23 +23,13 @@ print			"<h1 class='page-title'>My Account</h1>\n";
 print			"<hr>\n";
 print		"</div>\n";
 
-if(isset($_SESSION)) {
-	$db = new DB();
-	$query = "SELECT email, realname
-		FROM user
-		WHERE username = '" . $_SESSION['username'] . "';";
-	
-	$results = $db->dbCall($query);	
-	
-	$_SESSION['email'] = $results[0]["email"];
-	$_SESSION['realname'] = $results[0]["realname"];
-	
-	if ($results) {
+if(isset($_SESSION['isLoggedIn'])) {
+	if (isset($_SESSION['name'], $_SESSION['email'], $_SESSION['username'], $_SESSION['role'])) {
 		print		"<form id='accountForm'>\n";
 		print			"<div class='form-section'>\n";
 		print				"<div class='form-group'>\n";
 		print					"<label class='form-label' for='realname'>Name</label>\n";
-		print					"<input type='text' class='form-control' id='realname' name='realname' placeholder='" . $_SESSION['realname'] . "' readonly>\n";
+		print					"<input type='text' class='form-control' id='realname' name='realname' placeholder='" . $_SESSION['name'] . "' readonly>\n";
 		print				"</div>\n";
 		print				"<div class='form-group'>\n";
 		print					"<label class='form-label' for='email'>Email</label>\n";
@@ -57,7 +46,6 @@ if(isset($_SESSION)) {
 		print			"</div>\n";
 		print		"</form>\n";
 	} else {
-		print	"<hr/>\n";
 		print	"<h2>No account details found.</h2>\n";
 	}
 } else {

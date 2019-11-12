@@ -101,6 +101,11 @@ input + input {
 	margin-top: 20px;
 }
 
+.login-error {
+	color: var(--red);
+	font-size: 14px;
+}
+
 /*** SURVEY ***/
 .required {
 	font-style: italic;
