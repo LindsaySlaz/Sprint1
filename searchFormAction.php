@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require_once("groupTemplate.php");
+require_once("classes/GroupTemplate.php");
 require_once("DB.class.php");
 
 $page = new GroupTemplate("Album Results");

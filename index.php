@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require_once("groupTemplate.php");
+require_once("classes/GroupTemplate.php");
 
 $page = new GroupTemplate("Home Page");
 $page->addHeadElement("<meta charset='utf-8'>");

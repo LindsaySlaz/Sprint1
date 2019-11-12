@@ -21,16 +21,16 @@ Class GroupTemplate extends Template {
 		$html .=                                   "<a class='nav-link' href='survey.php'>Survey</a>\n";
 		$html .=                           "</li>\n";
 		
-		if(!isset($_SESSION['username'])) {
+		if(!isset($_SESSION['isLoggedIn'])) {
 			$html .=                       "<li class='nav-item'>\n";
 			$html .=                               "<a class='nav-link' href='login.php'>Log In</a>\n";
 			$html .=                       "</li>\n";
 		}
 		
-		if(isset($_SESSION['username'])) {
+		if(isset($_SESSION['isLoggedIn'], $_SESSION['name'])) {
 			$html .=                       "<li class='nav-item dropdown'>\n";
 			$html .=								"<a class='nav-link dropdown-toggle' href='#' id='navbarDropdownMenuLink' data-toggle='dropdown'>\n";
-			$html .=							  "Welcome, " . explode(' ', $_SESSION['name'])[0] . "!\n";
+			$html .=							  "Welcome, " . $_SESSION['name'] . "!\n";
 			$html .=							"</a>\n";
 			$html .=							"<div class='dropdown-menu'>\n";
 			
