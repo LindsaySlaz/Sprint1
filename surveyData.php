@@ -26,7 +26,7 @@ print		"</div>\n";
 if(isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
 	$db = new DB();
 	$query = "SELECT major, expectedgrade, favetopping
-		  FROM survey;";
+		  FROM survey";
 
 	$results = $db->dbCall($query);	
 	

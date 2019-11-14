@@ -46,7 +46,7 @@ if ($error) {
 	
 	$query = "SELECT albumtitle, albumartist, albumlength, albumlink 
 			  FROM album
-			  WHERE albumtitle LIKE '%" . $safeValue . "%' OR albumartist LIKE '%" . $safeValue . "%';";
+			  WHERE albumtitle LIKE '%" . $safeValue . "%' OR albumartist LIKE '%" . $safeValue . "%'";
 	
 	$results = $db->dbCall($query);	
 	
