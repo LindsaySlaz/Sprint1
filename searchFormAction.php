@@ -24,27 +24,19 @@ if (!isset($_POST['searchField']) || empty($_POST['searchField'])) {
 }
 
 if ($error) {
-	// There shouldn't be an error with JS validation
-	
 	print	"<div class='mw-wrapper'>\n";
 	print		"<h2>All fields are required.</h2>\n";
 	print	"</div>\n";
-
 } else {
-    
     $data = array("apikey" => "22394232932kwhfwfe2","searchField" => $_POST['searchField']);
     $dataJson = json_encode($data);
-
     $contentLength = strlen($dataJson);
-
     $header = array(
         'Content-Type: application/json',
         'Accept: application/json',
         'Content-Length: ' . $contentLength
-    );
-    
-    $url = "http://cnmtsrv2.uwsp.edu/~jdick723/Sprint1/webService/albumQuery.php";
-    
+    );   
+    $url = "http://cnmtsrv2.uwsp.edu/~jdick723/Sprint1/webService/albumQuery.php";    
     $ch = curl_init();
 
     curl_setopt($ch,
@@ -61,7 +53,6 @@ if ($error) {
     $return = curl_exec($ch);
 
     $httpStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-
     if ($httpStatus != 200) {
             // Usually don't reflect httpStatus to user.
             print "Something went wrong with the request: " . $httpStatus;
@@ -83,8 +74,7 @@ if ($error) {
     
     if (property_exists($results,"result")) {
             if (property_exists($results,"ErrorMessage")) {
-                    //If this was user-facing, a better error message would be needed.
-                    print "Something went wrong: " . $results->result->ErrorMessage;
+                print "Something went wrong: " . $results->result->ErrorMessage;
             } else {
                 if (is_array($results->result)) {
                     print 		"<table class='table'>\n";
@@ -112,7 +102,9 @@ if ($error) {
                             foreach ($album as $key => $value) {
                                 print "<td>\n";
                                 if($key == "albumlink")
-                                    print "<a href='$value' target='_blank'><img src='img/amazonMusic.png' width='100' height='30' /></a>";
+                                    print "<a href='$value' target='_blank'>\n";
+                                    print "<img src='img/amazonMusic.png' width='100' height='30' alt='View on Amazon Music' />\n";
+                                    print "</a>\n";
                                 else
                                     print $value;
                                 print "</td>\n";
@@ -120,7 +112,7 @@ if ($error) {
                         }                        
                         print "</tr>\n";
                     }
-
+                    
                     print 			"</tbody>\n";
                     print 		"</table>\n";
                 } else {
@@ -129,7 +121,7 @@ if ($error) {
                 }
             }
     } else {
-            print "Something went wrong with the return, no result found";
+        print "Something went wrong with the return, no result found";
     }
 
     curl_close($ch);	

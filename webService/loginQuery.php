@@ -3,7 +3,6 @@
 require_once("Database/DB.class.php");
 
 $rawData = file_get_contents("php://input");
-
 if (is_null($rawData) || empty($rawData)){
     
     print "No input recieved.";
@@ -11,7 +10,6 @@ if (is_null($rawData) || empty($rawData)){
 }
 
 $input = json_decode($rawData);
-
 if (!property_exists($input,"username") && !property_exists($input,"password")){
     print json_encode(array("result" =>
     array("ErrorMessage" => "No query detected")));
@@ -28,10 +26,8 @@ $query = "SELECT u.username, u.userpass, u.realname, u.email, r.rolename
     WHERE u.username = '" . $safeUsername . "'";
 
 $results = $db->dbCall($query);
-
 if(!$results){
-    print json_encode(array("result" => array("badLogin" => "Invalid username or password.")));
-    
+    print json_encode(array("result" => array("badLogin" => "Invalid username or password.")));   
 } else{
     print json_encode(array("result" => $results));
 }

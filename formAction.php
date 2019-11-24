@@ -25,7 +25,6 @@ foreach($fields as $field) {
 }
 
 if ($error) {
-	// There shouldn't be an error with JS validation
 	print $page->getTopSection();
 	print $page->createHeader();
 	
@@ -37,20 +36,15 @@ if ($error) {
 	print $page->createFooter();
 	print $page->getBottomSection();
 } else {
-    
     $data = array("apikey" => "22394232932kwhfwfe2","majorChecks" => $_POST['majorChecks'], "gradeRadios" => $_POST['gradeRadios'], "toppingRadios" => $_POST['toppingRadios'], "ip" => $_SERVER['REMOTE_ADDR']);
     $dataJson = json_encode($data);
-
     $contentLength = strlen($dataJson);
-
     $header = array(
         'Content-Type: application/json',
         'Accept: application/json',
         'Content-Length: ' . $contentLength
     );
-    
     $url = "http://cnmtsrv2.uwsp.edu/~jdick723/Sprint1/webService/surveyInsert.php";
-    
     $ch = curl_init();
 
     curl_setopt($ch,
@@ -67,7 +61,6 @@ if ($error) {
     $return = curl_exec($ch);
 
     $httpStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-
     if ($httpStatus != 200) {
             // Usually don't reflect httpStatus to user.
             print "Something went wrong with the request: " . $httpStatus;
