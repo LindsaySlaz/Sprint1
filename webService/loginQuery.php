@@ -19,16 +19,15 @@ if (!property_exists($input,"username") && !property_exists($input,"password")){
 }
 
 $db = new DB();
-	$safeUsername = $db->dbEsc($input->username);
-	$safePassword = $db->dbEsc($input->password);
-	$query = "SELECT u.username, u.userpass, u.realname, u.email, r.rolename
-		FROM user u
-		JOIN user2role o ON u.id=o.id
-		JOIN role r ON o.id=r.id
-		WHERE u.username = '" . $safeUsername . "' 
-        AND u.userpass = '" . $safePassword . "'";
+$safeUsername = $db->dbEsc($input->username);
+$safePassword = $db->dbEsc($input->password);
+$query = "SELECT u.username, u.userpass, u.realname, u.email, r.rolename
+    FROM user u
+    JOIN user2role o ON u.id=o.id
+    JOIN role r ON o.id=r.id
+    WHERE u.username = '" . $safeUsername . "'";
 
-	$results = $db->dbCall($query);
+$results = $db->dbCall($query);
 
 if(!$results){
     print json_encode(array("result" => array("badLogin" => "Invalid username or password.")));
