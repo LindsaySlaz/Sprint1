@@ -3,7 +3,6 @@
 require_once("Database/DB.class.php");
 
 $rawData = file_get_contents("php://input");
-
 if (is_null($rawData) || empty($rawData)){
     
     print "No input recieved.";
@@ -11,13 +10,11 @@ if (is_null($rawData) || empty($rawData)){
 }
 
 $input = json_decode($rawData);
-
 $db = new DB();
 $query = "SELECT major, expectedgrade, favetopping
 		  FROM survey";
 
 $results = $db->dbCall($query);	
-
 if(!$results){
     print json_encode(array("result" =>
     array("badSearch" => "No results found.")));
