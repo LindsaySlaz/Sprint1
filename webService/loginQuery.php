@@ -1,6 +1,6 @@
 <?php
 
-require_once("DB.class.php");
+require_once("Database/DB.class.php");
 
 $rawData = file_get_contents("php://input");
 if (is_null($rawData) || empty($rawData)){
