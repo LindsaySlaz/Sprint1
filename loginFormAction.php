@@ -2,7 +2,6 @@
 
 session_start();
 require_once("classes/GroupTemplate.php");
-require_once("DB.class.php");
 
 $page = new GroupTemplate("Login");
 $page->addHeadElement("<meta charset='utf-8'>");
