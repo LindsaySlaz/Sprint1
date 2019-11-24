@@ -101,11 +101,11 @@ if ($error) {
                             print "<tr>\n";
                             foreach ($album as $key => $value) {
                                 print "<td>\n";
-                                if($key == "albumlink")
+                                if($key == "albumlink") {
                                     print "<a href='$value' target='_blank'>\n";
                                     print "<img src='img/amazonMusic.png' width='100' height='30' alt='View on Amazon Music' />\n";
                                     print "</a>\n";
-                                else
+                                } else
                                     print $value;
                                 print "</td>\n";
                             }    
