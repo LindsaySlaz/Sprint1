@@ -37,16 +37,7 @@ if ($error) {
 	require_once("bsScripts.php");
 	print $page->createFooter();
 	print $page->getBottomSection();
-} else {
-	/*$db = new DB();
-	$safeUsername = $db->dbEsc($_POST['username']);
-	$safePassword = $db->dbEsc($_POST['password']);
-	$query = "SELECT u.username, u.userpass, u.realname, u.email, r.rolename
-		FROM user u
-		JOIN user2role o ON u.id=o.id
-		JOIN role r ON o.id=r.id
-		WHERE u.username = '" . $safeUsername . "'";
-	$results = $db->dbCall($query);*/
+} else {	
     
     $data = array("apikey" => "22394232932kwhfwfe2","username" => $_POST['username'],"password" => $_POST['password']);
     $dataJson = json_encode($data);
@@ -110,12 +101,14 @@ if ($error) {
                 }
                 else {
                     header("location: login.php");
-                    exit;
+                    $_SESSION['error'] = "Invalid username or password.";
+                    exit;                    
                 }	
             } else {
                 header("location: login.php");
                 $_SESSION['error'] = $results->result->badLogin;
-                exit;                
+                exit;                   
+                
             }
             
         }
