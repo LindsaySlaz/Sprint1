@@ -29,7 +29,6 @@ if(isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
 		  FROM survey";
 
 	$results = $db->dbCall($query);	
-	
 	if ($results) {
 		print 		"<table class='table'>\n";
 		print 			"<thead>\n";

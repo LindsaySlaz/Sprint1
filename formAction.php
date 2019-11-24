@@ -26,7 +26,6 @@ foreach($fields as $field) {
 }
 
 if ($error) {
-	// There shouldn't be an error with JS validation
 	print $page->getTopSection();
 	print $page->createHeader();
 	
@@ -39,11 +38,7 @@ if ($error) {
 	print $page->getBottomSection();
 } else {
 	$db = new DB();
-	
-	//User ip
 	$ip = $_SERVER['REMOTE_ADDR'];
-
-	//Sanitize input
 	$safeMajor = $db->dbEsc($_POST['majorChecks']);
 	$safeGrade = $db->dbEsc($_POST['gradeRadios']);
 	$safeTopping = $db->dbEsc($_POST['toppingRadios']);
